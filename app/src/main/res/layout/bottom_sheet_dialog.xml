@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/dialog_bg"
+    android:padding="5dp">
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/circle_button"/>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="18dp"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:src="@drawable/avatar"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Identificarse con su ID"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textSize="25dp"/>
+
+        <EditText
+            android:id="@+id/etUserAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter usermane"
+            android:padding="10dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/white"
+            android:textColorHint="#7E8D9C"
+            android:background="@drawable/round_edittext"/>
+
+        <EditText
+            android:id="@+id/etPasswordAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter password"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="#7E8D9C"
+            android:inputType="textPassword"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_edittext"/>
+
+        <Button
+            android:id="@+id/btSubmitAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#0D0D20"
+            style="?attr/materialButtonOutlinedStyle"
+            app:cornerRadius="12dp"
+            android:shadowRadius="18"
+            app:strokeColor="#0E913B"
+            app:strokeWidth="2dp"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textColor="#0E913B"
+            android:textAppearance="@style/Widget.MaterialComponents.TimePicker.Button"
+            android:text="Acceder"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

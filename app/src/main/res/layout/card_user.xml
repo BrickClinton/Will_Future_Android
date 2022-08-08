@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="6dp"
+    android:animateLayoutChanges="true"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    android:layout_columnWeight="1"
+    android:layout_rowWeight="1"
+    android:layout_margin="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivPictureUser"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="2dp"
+            android:src="@drawable/avatar"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:padding="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvNameUserCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Admin 45"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textAlignment="inherit"
+                android:gravity="start"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tvLastnameCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Historial del usuario"
+                android:textSize="18sp"
+                android:textAlignment="inherit"
+                android:gravity="start"
+                android:textColor="@color/black"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btEditDataUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="12dp"
+                    android:backgroundTint="#1075A7"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:text="Editar"/>
+
+                <Button
+                    android:id="@+id/btDeleteUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="12dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:backgroundTint="#A71022"
+                    android:text="Eliminar"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>

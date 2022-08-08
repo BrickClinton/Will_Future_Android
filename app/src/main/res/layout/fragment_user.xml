@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textDirection="firstStrong"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btOpenFragmentRegisterUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:backgroundTint="#f2f2f2"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                style="?attr/materialButtonOutlinedStyle"
+                app:cornerRadius="20dp"
+                android:shadowRadius="18"
+                app:strokeColor="#233F58"
+                android:paddingLeft="11dp"
+                android:paddingRight="11dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:textAlignment="center"
+                android:textSize="16dp"
+                android:textColor="#233F58"
+                android:textAppearance="@style/Widget.MaterialComponents.TimePicker.Button"
+                android:text="Formulario"/>
+
+            <Button
+                android:id="@+id/btOpenFragmentListUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:backgroundTint="#f2f2f2"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                style="?attr/materialButtonOutlinedStyle"
+                app:cornerRadius="20dp"
+                android:shadowRadius="18"
+                app:strokeColor="#233F58"
+                android:paddingLeft="11dp"
+                android:paddingRight="11dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:textAlignment="center"
+                android:textSize="16dp"
+                android:textColor="#233F58"
+                android:textAppearance="@style/Widget.MaterialComponents.TimePicker.Button"
+                android:text="Usuarios registrados"/>
+
+            <Button
+                android:id="@+id/btOpenFragmentDesignUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:backgroundTint="#f2f2f2"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                style="?attr/materialButtonOutlinedStyle"
+                app:cornerRadius="20dp"
+                android:shadowRadius="18"
+                app:strokeColor="#233F58"
+                android:paddingLeft="11dp"
+                android:paddingRight="11dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:textAlignment="center"
+                android:textSize="16dp"
+                android:textColor="#233F58"
+                android:textAppearance="@style/Widget.MaterialComponents.TimePicker.Button"
+                android:text="Design"/>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!--liner-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="2dp"
+        android:background="#D9D9D9"/>
+
+    <!--View page-->
+    <FrameLayout
+        android:id="@+id/flContainerUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+</LinearLayout>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:topLeftRadius="30dp"
+    android:topRightRadius="30dp"
+    android:background="@drawable/dialog_bg"
+    app:behavior_peekHeight="60dp"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    android:padding="5dp">
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/circle_button"/>
+
+    <LinearLayout
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ACTUALIZAR AREA       "
+            android:gravity="center"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:textColor="#C3C6CC"/>
+
+        <!--liner-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="12dp"
+            android:background="#D9D9D9"/>
+
+        <!--Seleccione el tipo de area-->
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            app:startIconDrawable="@drawable/ic_select_all"
+            app:hintTextColor="#1C8484"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/teal_700"
+            android:textColorHint="#73A6C3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/acTypeAreaBottomSheet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:hint="Tipo de area"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:hintTextColor="#1C8484"
+                android:textColorHint="#73A6C3"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/teal_700"
+                android:hint="Area">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNameAreaEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                app:hintTextColor="#1C8484"
+                android:textColorHint="#73A6C3"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/teal_700"
+                android:layout_marginLeft="8dp"
+                android:hint="Precio">
+
+                <EditText
+                    android:id="@+id/etPriceAreaEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btCloseBSArea"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="12dp"
+                android:layout_marginRight="10dp"
+                android:text="Cancelar"
+                android:textColor="@color/black"
+                app:cornerRadius="8dp"
+                app:strokeColor="#000000"
+                app:strokeWidth="1dp"
+                android:backgroundTint="#ADB1B8"/>
+
+            <Button
+                android:id="@+id/btUpdateArea"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="12dp"
+                android:text="Actualizar"
+                android:textColor="@color/white"
+                app:cornerRadius="8dp"
+                app:strokeColor="#1C8484"
+                app:strokeWidth="2dp"
+                android:backgroundTint="#1C8484"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

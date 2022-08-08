@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Contenido del toolbar - barra superior -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:id="@+id/lyMainTolbar"
+    android:gravity="center_horizontal">
+
+    <!-- Icono amburguess-->
+    <ImageView
+        android:id="@+id/ivMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_menu"/>
+
+    <!-- Titulo del toolbar centrado -->
+    <TextView
+        android:id="@+id/tvTitleTolbarmain"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="WBW-Hard"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="#0D94B7"/>
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:searchIcon="@drawable/ic_search"
+        android:textAlignment="gravity"/>
+
+    <!-- Icono more - mostrar más contenidos -->
+    <ImageView
+        android:id="@+id/ivMoreMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_more"/>
+
+</LinearLayout>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.fragmentArea">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textDirection="firstStrong"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btOpenFragmentRegisterArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:backgroundTint="#f2f2f2"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    style="?attr/materialButtonOutlinedStyle"
+                    app:cornerRadius="20dp"
+                    android:shadowRadius="18"
+                    app:strokeColor="#233F58"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:textAlignment="center"
+                    android:textSize="16dp"
+                    android:textColor="#233F58"
+                    android:textAppearance="@style/Widget.MaterialComponents.TimePicker.Button"
+                    android:text="Formulario"/>
+
+                <Button
+                    android:id="@+id/btOpenFragmentListArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:backgroundTint="#f2f2f2"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    style="?attr/materialButtonOutlinedStyle"
+                    app:cornerRadius="20dp"
+                    android:shadowRadius="18"
+                    app:strokeColor="#233F58"
+                    android:paddingLeft="11dp"
+                    android:paddingRight="11dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:textAlignment="center"
+                    android:textSize="16dp"
+                    android:textColor="#233F58"
+                    android:textAppearance="@style/Widget.MaterialComponents.TimePicker.Button"
+                    android:text="Areas registradas"/>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <!--liner-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="2dp"
+            android:background="#D9D9D9"/>
+
+        <!--View page-->
+        <FrameLayout
+            android:id="@+id/flContainerArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

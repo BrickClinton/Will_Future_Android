@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/drawable/circle_button.xml" value="0.1" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/drawable/custom_button.xml" value="0.144" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/drawable/dialog_bg.xml" value="0.1045" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/drawable/ic_add_user.xml" value="0.1155" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/drawable/ic_baseline_person_add_alt_1_24.xml" value="0.23" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/drawable/ic_menu.xml" value="0.103" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/drawable/ic_search.xml" value="0.108" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/drawable/round_button.xml" value="0.103" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/drawable/round_edittext.xml" value="0.1375" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/drawable/tab_selector.xml" value="0.1" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/activity_list_user_demo.xml" value="0.22708333333333333" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/activity_more.xml" value="0.3625" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/activity_tabs_layout.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/bottom_sheet_area.xml" value="0.33" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.33" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/card_area.xml" value="0.33" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/card_user.xml" value="0.3625" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/drawer_area.xml" value="0.25104166666666666" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/fragment_area.xml" value="0.33" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/fragment_carousel_slider.xml" value="0.33" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/fragment_dialog_demo.xml" value="0.2677083333333333" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/fragment_dialog_edit_user.xml" value="0.2677083333333333" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/fragment_fg_register_user.xml" value="0.25" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/fragment_history.xml" value="0.2171875" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/fragment_list_area.xml" value="0.265625" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/fragment_list_user.xml" value="0.33" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/fragment_register_area.xml" value="0.265625" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/fragment_register_user.xml" value="0.33" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/fragment_user.xml" value="0.33" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/list_items_area.xml" value="0.2677083333333333" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/main_nav_drawer.xml" value="0.33" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/main_tabs_pager.xml" value="0.3625" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/main_tolbar.xml" value="0.33" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/layout/tab_layout.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/menu/menu.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/clinton/AndroidStudioProjects/WBWfirst/app/src/main/res/menu/menu_navigation_bottom.xml" value="0.25104166666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
