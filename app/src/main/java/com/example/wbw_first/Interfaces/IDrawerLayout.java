@@ -4,18 +4,20 @@ import android.view.View;
 
 // Definición de los click del menu de navegación
 public interface IDrawerLayout {
-    public void ClickMenu(View view);
+    void ClickMenu(View view);
 
-    public void ClickBackMain(View view);
+    void ClickBackMain(View view);
 
-    public void ClickHome(View view);
+    void ClickHome(View view);
 
-    public void ClickUser(View view);
+    void ClickUser(View view);
 
-    public void ClickArea(View view);
+    void ClickArea(View view);
 
-    public void ClickHistory(View view);
+    void ClickProgress(View view);
 
-    public void ClickLogout(View view);
+    void ClickHistory(View view);
+
+    void ClickLogout(View view);
 
 }

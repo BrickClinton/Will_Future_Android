@@ -3,6 +3,7 @@ package com.example.wbw_first.Fragments;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.SearchView;
@@ -15,14 +16,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.wbw_first.Adapters.ListAdapterCard;
 import com.example.wbw_first.DataBase.ModelUser;
+import com.example.wbw_first.Dialogs.DialogEditUser;
 import com.example.wbw_first.Dialogs.DialogFragmentDemo;
 import com.example.wbw_first.Dialogs.DialogFragmentEditUser;
+import com.example.wbw_first.Entities.EArea;
 import com.example.wbw_first.Entities.EUser;
 import com.example.wbw_first.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
 
@@ -38,6 +44,8 @@ public class fragmentListUser extends Fragment implements SearchView.OnQueryText
     private LinearLayoutManager linearLayoutManager;
     private ListAdapterCard adapter;
     private SearchView searchUser;
+
+    private Button btClose;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,19 +98,9 @@ public class fragmentListUser extends Fragment implements SearchView.OnQueryText
         adapter = new ListAdapterCard(context, listUsers, new ListAdapterCard.OnItemClickListener() {
             @Override
             public void onItemClickEdit(EUser eUser) {
-                DialogFragmentEditUser dialogFragmentEditUser = new DialogFragmentEditUser(eUser, new DialogFragmentEditUser.OnItemClickListener() {
-                    @Override
-                    public void onItemClickUpdate(EUser eUser) {
-                        if(eUser.getNameuser().equals("") && eUser.getLastname().equals("")){
-                            Toast.makeText(context, "DATOS INCOMPLETOS", Toast.LENGTH_SHORT).show();
-                        } else {
-                            modelUser.updateUser(eUser);
-                            loadData();
-                        }
-                    }
-                });
-                dialogFragmentEditUser.show(getParentFragmentManager(), "DialogoUser");
-
+                openActivity(eUser);
+                loadData();
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -111,7 +109,7 @@ public class fragmentListUser extends Fragment implements SearchView.OnQueryText
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
                 // Configurar
-                builder.setTitle("Eliminar usuario");
+                builder.setTitle("ELIMINAR USUARIO");
                 builder.setMessage("¿Está seguro de eliminar ?");
                 builder.setCancelable(false);
                 builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
@@ -134,6 +132,64 @@ public class fragmentListUser extends Fragment implements SearchView.OnQueryText
         });
 
         recyclerView.setAdapter(adapter);
+    }
+
+    private void openActivity(EUser eUser){
+        Intent intent = new Intent(context, DialogEditUser.class);
+
+        // Data send
+        intent.putExtra("iduser", eUser.getIduser());
+        intent.putExtra("username", eUser.getNameuser());
+        intent.putExtra("lastname", eUser.getLastname());
+        startActivity(intent);
+    }
+
+    private void openBottomSheet(EUser eUser){
+        // Crear modal bottom
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
+        bottomSheetDialog.setContentView(R.layout.activity_dialog_edit_user);
+        bottomSheetDialog.setCanceledOnTouchOutside(true);
+
+        // Inicializar UI
+        btClose = bottomSheetDialog.findViewById(R.id.btCloseDialogUser);
+
+        // Datos traidos
+
+        // Listener onclick
+        btClose.setOnClickListener(view1 -> {
+            bottomSheetDialog.dismiss();
+        });
+
+        // Mostrar bottomSheetdialog
+        bottomSheetDialog.show();
+    }
+
+    private void questionUpdate(EUser eUser){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("ACTUALIZAR USUARIO");
+        builder.setMessage("¿Está seguro de actualizar el registro?");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                long iduser = modelUser.updateUser(eUser);
+
+                if(iduser > 0){
+                    loadData();
+                    Toast.makeText(context, "Actualizado", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Error al actualizar", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        builder.show();
     }
 
     @Override

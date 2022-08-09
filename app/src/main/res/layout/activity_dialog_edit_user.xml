@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     android:background="#282C31"
     android:orientation="vertical"
-    tools:context=".ActivityMore">
+    tools:context=".Dialogs.DialogEditUser">
 
     <!--Barra superior-->
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/blDialogMore"
+        android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tbReturnDialogMore"
+            android:id="@+id/tbReturnDialogEdituser"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#1F81B9"
@@ -23,7 +23,7 @@
             android:minWidth="0dp"
             android:minHeight="0dp"
             app:navigationIcon="@drawable/ic_return"
-            app:title="Más contenidos"
+            app:title="Editar cuenta de usuario"
             app:titleTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -46,6 +46,7 @@
             android:hint="Nombres">
 
             <EditText
+                android:id="@+id/etNameuserDialogUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -63,14 +64,52 @@
             android:hint="Apellidos">
 
             <EditText
+                android:id="@+id/etLastnameDialogUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btCloseDialogUser"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="12dp"
+                android:layout_marginRight="10dp"
+                android:text="Cancelar"
+                android:textColor="@color/black"
+                app:cornerRadius="8dp"
+                app:strokeColor="#000000"
+                app:strokeWidth="1dp"
+                android:backgroundTint="#ADB1B8"/>
+
+            <Button
+                android:id="@+id/btUpdateDialogUser"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="12dp"
+                android:text="Actualizar"
+                android:textColor="@color/white"
+                app:cornerRadius="8dp"
+                app:strokeColor="#1C8484"
+                app:strokeWidth="2dp"
+                android:backgroundTint="#1C8484"/>
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
-
 
 </LinearLayout>

@@ -14,23 +14,25 @@ import com.example.wbw_first.Entities.EUser;
 
 public class DBAccess extends SQLiteOpenHelper {
 
-    // Declarfación e inicialización de constantes
+    // Declaración e inicialización de constantes
     private static final String NAME_DB = "WPWHARD";
     private static final int VERSION_DB = 1;
 
     // Definición de tablas
     private static final String TABLE_USER = "CREATE TABLE user (iduser INTEGER, nameuser TEXT NOT NULL, lastname TEXT NOT NULL, PRIMARY KEY(iduser AUTOINCREMENT))";
     private static final String TABLE_AREA = "CREATE TABLE area (idarea INTEGER, namearea TEXT NOT NULL UNIQUE, price REAL NOT NULL, dateregister TEXT NOT NULL, PRIMARY KEY(idarea AUTOINCREMENT))";
+    private static final String TABLE_ACTIVITY = "CREATE TABLE activity (idactivity INTEGER, iduser INTEGER NOT NULL, idarea INTEGER NOT NULL, numberbox INTEGER NOT NULL, dateregister TEXT NOT NULL, PRIMARY KEY(idactivity AUTOINCREMENT))";
 
+    // Constructor DataBase
     public DBAccess(@Nullable Context context) {
         super(context, NAME_DB, null, VERSION_DB);
     }
-
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(TABLE_USER);
         sqLiteDatabase.execSQL(TABLE_AREA);
+        sqLiteDatabase.execSQL(TABLE_ACTIVITY);
     }
 
     @Override
@@ -38,6 +40,7 @@ public class DBAccess extends SQLiteOpenHelper {
         // Eliminar la tabla
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS user");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS area");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS activity");
 
         // Volver a crear
         onCreate(sqLiteDatabase);

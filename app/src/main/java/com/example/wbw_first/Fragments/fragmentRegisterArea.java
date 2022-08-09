@@ -121,7 +121,7 @@ public class fragmentRegisterArea extends Fragment {
     private void confirmRegister(String nameArea, double price){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-        builder.setTitle("Registro de area");
+        builder.setTitle("REGISTRO DE AREA");
         builder.setMessage("¿Está seguro de agregar el area?");
         builder.setCancelable(false);
         builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
@@ -158,5 +158,6 @@ public class fragmentRegisterArea extends Fragment {
         acSearchTypeArea.setText(null);
         etNameArea.setText(null);
         etPriceArea.setText(null);
+        acSearchTypeArea.requestFocus();
     }
 }

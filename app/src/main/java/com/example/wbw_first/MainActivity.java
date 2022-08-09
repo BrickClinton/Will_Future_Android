@@ -38,7 +38,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements IDrawerLayout, View.OnClickListener {
 
-    private LinearLayout lyHome, lyUser, lyArea, lyHistory, lyLogout, lyMainTolbar;
+    private LinearLayout lyHome, lyUser, lyArea, lyWork, lyHistory, lyLogout, lyMainTolbar;
     private ImageView ivMenu, ivMore, ivBackMain;
     private TextView tvTitleTolbar;
     private DrawerLayout drawerLayout;
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements IDrawerLayout, Vi
         lyHome.setOnClickListener(this);
         lyUser.setOnClickListener(this);
         lyArea.setOnClickListener(this);
+        lyWork.setOnClickListener(this);
         lyHistory.setOnClickListener(this);
         lyLogout.setOnClickListener(this);
     }
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements IDrawerLayout, Vi
         lyHome = findViewById(R.id.lyHome);
         lyUser = findViewById(R.id.lyUser);
         lyArea = findViewById(R.id.lyArea);
+        lyWork = findViewById(R.id.lyWork);
         lyHistory = findViewById(R.id.lyHistory);
         lyLogout = findViewById(R.id.lyLogout);
     }
@@ -120,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements IDrawerLayout, Vi
 
                 // Ocultar tolbar TOP
                 if(position != 0){
-                    lyMainTolbar.setVisibility(View.VISIBLE);
+                    lyMainTolbar.setVisibility(View.GONE);
                 } else {
                     lyMainTolbar.setVisibility(View.VISIBLE);
                 }
@@ -191,8 +193,14 @@ public class MainActivity extends AppCompatActivity implements IDrawerLayout, Vi
     }
 
     @Override
-    public void ClickHistory(View view) {
+    public void ClickProgress(View view) {
         tabLayoutMain.selectTab(tabLayoutMain.getTabAt(3));
+        Drawer.closeDrawer(drawerLayout);
+    }
+
+    @Override
+    public void ClickHistory(View view) {
+        tabLayoutMain.selectTab(tabLayoutMain.getTabAt(4));
         Drawer.closeDrawer(drawerLayout);
     }
 
@@ -205,30 +213,15 @@ public class MainActivity extends AppCompatActivity implements IDrawerLayout, Vi
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.ivMenu: ClickMenu(view);
-                break;
-            case R.id.ivMoreMain:
-                // Open More activity
-                Drawer.redirectActivity(this, ActivityMore.class);
-                break;
-            case R.id.ivMainBack:
-                ClickBackMain(view);
-                break;
-            case R.id.lyHome:
-                ClickHome(view);
-                break;
-            case R.id.lyUser:
-                ClickUser(view);
-                break;
-            case R.id.lyArea:
-                ClickArea(view);
-                break;
-            case R.id.lyHistory:
-                ClickHistory(view);
-                break;
-            case R.id.lyLogout:
-                ClickLogout(view);
-                break;
+            case R.id.ivMenu: ClickMenu(view); break;
+            case R.id.ivMoreMain: Drawer.redirectActivity(this, ActivityMore.class); break;
+            case R.id.ivMainBack: ClickBackMain(view); break;
+            case R.id.lyHome: ClickHome(view); break;
+            case R.id.lyUser: ClickUser(view); break;
+            case R.id.lyArea: ClickArea(view); break;
+            case R.id.lyWork: ClickProgress(view); break;
+            case R.id.lyHistory: ClickHistory(view); break;
+            case R.id.lyLogout: ClickLogout(view); break;
         }
     }
 
@@ -244,9 +237,4 @@ public class MainActivity extends AppCompatActivity implements IDrawerLayout, Vi
         fragmentTransaction.commit();
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        //finish();
-    }
 }

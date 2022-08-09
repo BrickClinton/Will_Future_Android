@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:topLeftRadius="30dp"
+    android:topRightRadius="30dp"
+    android:background="@drawable/dialog_bg"
+    app:behavior_peekHeight="60dp"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    android:orientation="vertical"
+    tools:context=".BottomSheet.dialogBottomRegisterActivity">
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/circle_button"/>
+
+    <LinearLayout
+        android:layout_marginTop="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REGISTRAR AVANCE"
+            android:gravity="center"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:textColor="#C3C6CC"/>
+
+        <!--liner-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="12dp"
+            android:background="#D9D9D9"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextColor="#1C8484"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/teal_700"
+            android:textColorHint="#73A6C3"
+            android:hint="Nombres y apellidos">
+
+            <EditText
+                android:id="@+id/etNameUserBSActivity"
+                android:clickable="false"
+                android:focusable="false"
+                android:inputType="none"
+                android:textIsSelectable="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--Selección de area-->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                app:startIconDrawable="@drawable/ic_work"
+                android:layout_weight="1"
+                app:hintTextColor="#1C8484"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/teal_700"
+                android:textColorHint="#73A6C3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/acSearchBSActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:textIsSelectable="false"
+                    android:inputType="none"
+                    android:hint="Area"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                app:hintTextColor="#1C8484"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/teal_700"
+                android:textColorHint="#73A6C3"
+                android:layout_marginLeft="8dp"
+                android:hint="Cantidad">
+
+                <EditText
+                    android:id="@+id/etNumberBoxBSActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="45dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btResetFormBSActivity"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="12dp"
+                android:text="Resetear"
+                android:textColor="@color/white"
+                app:cornerRadius="8dp"
+                app:strokeColor="#000000"
+                app:strokeWidth="1dp"
+                android:backgroundTint="#000000" />
+
+            <Button
+                android:id="@+id/btRegisterBsActivity"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="8dp"
+                android:padding="12dp"
+                android:text="Registrar"
+                android:textColor="@color/white"
+                app:cornerRadius="8dp"
+                app:strokeColor="#0E913B"
+                app:strokeWidth="2dp"
+                android:backgroundTint="#0E913B" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

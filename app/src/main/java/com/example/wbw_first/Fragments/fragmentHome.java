@@ -72,7 +72,6 @@ public class fragmentHome extends Fragment {
                 etUserAccount = bottomSheetDialog.findViewById(R.id.etUserAccount);
                 etPasswordAccount = bottomSheetDialog.findViewById(R.id.etPasswordAccount);
                 btSubmit = bottomSheetDialog.findViewById(R.id.btSubmitAccount);
-                etUserAccount.setText("testtt");
 
                 btSubmit.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -109,7 +108,6 @@ public class fragmentHome extends Fragment {
         btOpen1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 redirectActivity(getActivity(), MainActivity.class);
             }
         });

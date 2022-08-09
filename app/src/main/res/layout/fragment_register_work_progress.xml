@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".Fragments.fragmentRegisterUser">
+    tools:context=".Fragments.fragmentRegisterWorkProgress">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -14,10 +14,26 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!--List user-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            android:orientation="horizontal">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvListUserHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:scrollbarThumbHorizontal="@style/Widget.MaterialComponents.Tooltip"
+                tools:listitem="@layout/card_user_progress"/>
+
+        </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="REGISTRAR USUARIO"
+            android:text="FORMULARIO DE ACTIVIDAD"
             android:gravity="center"
             android:textSize="22dp"
             android:textStyle="bold"
@@ -38,7 +54,7 @@
             android:hint="Nombres">
 
             <EditText
-                android:id="@+id/etNameUserAdd"
+                android:id="@+id/etNameUserActivityAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -52,7 +68,7 @@
             android:hint="Apellidos">
 
             <EditText
-                android:id="@+id/etLastnameAdd"
+                android:id="@+id/etLastnameActivityAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/etNameUserAdd"
@@ -60,9 +76,48 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--Selección de area-->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                app:startIconDrawable="@drawable/ic_work"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/acSearchAreaActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:hint="Area"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:hint="Cantidad">
+
+                <EditText
+                    android:id="@+id/etNumberBoxActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
 
         <Button
-            android:id="@+id/btRegisterUser"
+            android:id="@+id/btRegisterActivity"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,7 +131,7 @@
             android:backgroundTint="#0E913B" />
 
         <Button
-            android:id="@+id/btResetFormUserAdd"
+            android:id="@+id/btResetFormActivityAdd"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,5 +145,6 @@
             android:backgroundTint="#000000" />
 
     </LinearLayout>
+
 
 </RelativeLayout>

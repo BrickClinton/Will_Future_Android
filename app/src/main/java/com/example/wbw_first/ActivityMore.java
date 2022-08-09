@@ -1,17 +1,17 @@
 package com.example.wbw_first;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.wbw_first.Utilities.Drawer;
+public class ActivityMore extends AppCompatActivity {
 
-public class ActivityMore extends AppCompatActivity implements View.OnClickListener {
-
-    ImageView ivBackMore;
+    private Toolbar tbDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,20 +22,23 @@ public class ActivityMore extends AppCompatActivity implements View.OnClickListe
         initUI();
 
         // Listener onclick
-        ivBackMore.setOnClickListener(this);
+        onClickListener();
     }
 
     private void initUI(){
-        ivBackMore = findViewById(R.id.ivBackMore);
+        // Tobar
+        tbDialog = findViewById(R.id.tbReturnDialogMore);
+        final Drawable iconReturn = getResources().getDrawable(R.drawable.ic_return);
+        iconReturn.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
+        tbDialog.setNavigationIcon(iconReturn);
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.ivBackMore:
-                finish();
-                break;
-        }
+    private void onClickListener(){
+        // Usando lamda para capturar el evento click
+        tbDialog.setNavigationOnClickListener(view -> {
+            //overridePendingTransition(R.anim.rigth_in, R.anim.rigth_out);
+            this.finish();
+        });
     }
 
     @Override

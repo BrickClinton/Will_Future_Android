@@ -95,7 +95,7 @@ public class DialogFragmentEditUser extends DialogFragment {
             }
         });
 
-        // Utilizado dese afuera
+        // Evento lanzado desde afuera
         btUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

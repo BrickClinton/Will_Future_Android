@@ -201,7 +201,7 @@ public class fragmentListArea extends Fragment implements SearchView.OnQueryText
 
     private void validateUpdate(EArea eArea){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Actualizar area");
+        builder.setTitle("ACTUALIZAR AREA");
         builder.setMessage("¿Está seguro de actualizar?");
         builder.setCancelable(false);
         builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
@@ -230,7 +230,7 @@ public class fragmentListArea extends Fragment implements SearchView.OnQueryText
 
     private void validateDelete(int idarea){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Eliminar area");
+        builder.setTitle("ELIMINAR AREA");
         builder.setMessage("¿Está seguro de eliminar el registro?");
         builder.setCancelable(false);
         builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {

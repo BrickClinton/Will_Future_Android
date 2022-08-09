@@ -3,6 +3,7 @@ package com.example.wbw_first.DataBase;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
@@ -82,21 +83,27 @@ public class ModelUser extends DBAccess {
     public long updateUser(EUser eUser){
         // Objeto que permite la esritura de datos
         SQLiteDatabase db = getWritableDatabase();
+        int value = -1;
 
-        // Parametros (consición a evaluar)
-        String[] parameters = {String.valueOf(eUser.getIduser())};
+        try{
+            // Parametros (condición a evaluar)
+            String[] parameters = {String.valueOf(eUser.getIduser())};
 
-        // Contenido de los valores a actualizar
-        ContentValues values = new ContentValues();
-        values.put("nameuser", eUser.getNameuser());
-        values.put("lastname", eUser.getLastname());
+            // Contenido de los valores a actualizar
+            ContentValues values = new ContentValues();
+            values.put("nameuser", eUser.getNameuser());
+            values.put("lastname", eUser.getLastname());
 
-        int value = db.update("user", values, "iduser=?", parameters);
+            value = db.update("user", values, "iduser=?", parameters);
 
-        // Cerrar la conexión
-        db.close();
+            // Cerrar la conexión
+            db.close();
 
-        return value;
+        } catch (SQLException exception){
+            throw new RuntimeException(exception.toString());
+        } finally {
+            return value;
+        }
     }
 
     // Delete

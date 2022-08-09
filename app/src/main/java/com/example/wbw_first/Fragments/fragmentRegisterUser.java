@@ -90,6 +90,7 @@ public class fragmentRegisterUser extends Fragment{
         etNameuser.setText(null);
         etLastname.setText(null);
         etNameuser.setSelected(true);
+        etNameuser.requestFocus();
     }
 
     // Registrar
@@ -101,7 +102,7 @@ public class fragmentRegisterUser extends Fragment{
             // Objeto Alert dialogo
             AlertDialog.Builder dialog = new AlertDialog.Builder(context);
 
-            dialog.setTitle("User")
+            dialog.setTitle("REGISTRO DE USUARIO")
                     .setMessage("¿Está seguro de crear su cuenta?")
                     .setCancelable(false)
                     .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {

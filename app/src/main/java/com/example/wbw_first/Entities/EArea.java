@@ -53,11 +53,6 @@ public class EArea implements Serializable {
 
     @Override
     public String toString() {
-        return "EArea{" +
-                "idarea=" + idarea +
-                ", namearea='" + namearea + '\'' +
-                ", price=" + price +
-                ", dateregister='" + dateregister + '\'' +
-                '}';
+        return namearea;
     }
 }

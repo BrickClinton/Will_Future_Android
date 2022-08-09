@@ -44,6 +44,9 @@ public class fragmentArea extends Fragment {
         // Listener onclick
         onClickListener();
 
+        // Fragmento mostrado por defecto
+        replaceFragment(new fragmentListArea());
+
         return view;
     }
 
