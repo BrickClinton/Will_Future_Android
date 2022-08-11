@@ -39,7 +39,7 @@ public class ModelActivity extends DBAccess{
                 contentValues.put("dateregister", LocalDateTime.now().toString());
 
                 // Devolver el resultado
-                value = db.insert("area", "idarea", contentValues);
+                value = db.insert("activity", "idactivity", contentValues);
 
                 // Cerrar conexión
                 db.close();
@@ -65,7 +65,12 @@ public class ModelActivity extends DBAccess{
         ArrayList<EActivity> dataList = new ArrayList<>();
 
         // Desencadenar la consulta y traer los datos
-        Cursor cursor = db.rawQuery("SELECT * FROM activity ORDER BY idactivity DESC", null);
+        String query = "SELECT activity.idactivity, activity.iduser, activity.numberbox, activity.dateregister, " +
+                        " area.idarea, area.namearea, area.price " +
+                        "FROM activity INNER JOIN area ON area.idarea = activity.idarea " +
+                        "ORDER BY activity.idactivity DESC";
+
+        Cursor cursor = db.rawQuery(query, null);
 
         // Obteniendo los datos obtenidos en la consulta anterior
         while (cursor.moveToNext()){
@@ -75,9 +80,52 @@ public class ModelActivity extends DBAccess{
             // Asignar los datos del cursos a la ENTIDAD
             eActivity.setIdactivity(cursor.getInt(0));
             eActivity.setIduser(cursor.getInt(1));
-            eActivity.setIdarea(cursor.getInt(2));
-            eActivity.setNumberbox(cursor.getInt(3));
-            eActivity.setDateregister(cursor.getString(4));
+            eActivity.setNumberbox(cursor.getInt(2));
+            eActivity.setDateregister(cursor.getString(3));
+            eActivity.setIdarea(cursor.getInt(4));
+            eActivity.setNamearea(cursor.getString(5));
+            eActivity.setPrice(cursor.getDouble(6));
+
+            // Añadiendo el objeto al array
+            dataList.add(eActivity);
+        }
+
+        return dataList;
+    }
+
+    // listar
+    public ArrayList<EActivity> getRowsByIduser(int iduser){
+        // Solicitar acceso de tipo lectura
+        SQLiteDatabase db = getReadableDatabase();
+
+        // Instancia user
+        EActivity eActivity;
+
+        // Instanciado el arraylist
+        ArrayList<EActivity> dataList = new ArrayList<>();
+
+        // Desencadenar la consulta y traer los datos
+        String query = "SELECT activity.idactivity, activity.iduser, activity.numberbox, activity.dateregister, " +
+                        " area.idarea, area.namearea, area.price " +
+                        "FROM activity INNER JOIN area ON area.idarea = activity.idarea " +
+                        "WHERE activity.iduser = " + iduser +
+                        " ORDER BY activity.idactivity ASC";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        // Obteniendo los datos obtenidos en la consulta anterior
+        while (cursor.moveToNext()){
+            // Instanciando la entidad
+            eActivity = new EActivity();
+
+            // Asignar los datos del cursos a la ENTIDAD
+            eActivity.setIdactivity(cursor.getInt(0));
+            eActivity.setIduser(cursor.getInt(1));
+            eActivity.setNumberbox(cursor.getInt(2));
+            eActivity.setDateregister(cursor.getString(3));
+            eActivity.setIdarea(cursor.getInt(4));
+            eActivity.setNamearea(cursor.getString(5));
+            eActivity.setPrice(cursor.getDouble(6));
 
             // Añadiendo el objeto al array
             dataList.add(eActivity);

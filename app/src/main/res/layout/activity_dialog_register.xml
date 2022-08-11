@@ -1,27 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#282C31"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:topLeftRadius="30dp"
-    android:topRightRadius="30dp"
-    android:background="@drawable/dialog_bg"
-    app:behavior_peekHeight="60dp"
-    app:layout_behavior="@string/bottom_sheet_behavior"
-    android:padding="5dp">
+    tools:context=".Dialogs.DialogRegisterActivity">
 
-    <View
-        android:layout_width="50dp"
-        android:layout_height="5dp"
-        android:layout_marginTop="6dp"
-        android:background="@drawable/circle_button"/>
+    <!--Barra superior-->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tbReturnDialogActivity"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#1F81B9"
+            android:padding="0dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:navigationIcon="@drawable/ic_return"
+            app:title="REGISTRAR AVANCES"
+            app:titleTextColor="@color/white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_marginTop="45dp"
-        android:layout_marginBottom="45dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
@@ -30,7 +37,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ACTUALIZAR AREA       "
+            android:text="AVANCES DE HOY"
             android:gravity="center"
             android:textSize="22dp"
             android:textStyle="bold"
@@ -44,30 +51,54 @@
             android:layout_marginBottom="12dp"
             android:background="#D9D9D9"/>
 
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextColor="#1C8484"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/teal_700"
+            android:textColorHint="#73A6C3"
+            android:hint="Nombres y apellidos">
+
+            <EditText
+                android:id="@+id/etNameUserDialogActivity"
+                android:clickable="false"
+                android:focusable="false"
+                android:inputType="none"
+                android:textIsSelectable="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <LinearLayout
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="6dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!--Seleccione el tipo de area-->
+            <!--Selección de area-->
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                app:startIconDrawable="@drawable/ic_select_all"
+                app:startIconDrawable="@drawable/ic_work"
+                android:layout_weight="1"
                 app:hintTextColor="#1C8484"
                 app:boxBackgroundColor="@color/white"
                 app:boxStrokeColor="@color/teal_700"
                 android:textColorHint="#73A6C3"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                    android:id="@+id/acTypeAreaBottomSheet"
+                    android:id="@+id/acSearchDialogActivity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:textIsSelectable="false"
                     android:inputType="none"
-                    android:hint="Tipo de area"/>
+                    android:hint="Area"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,14 +107,14 @@
                 android:layout_width="105dp"
                 android:layout_height="wrap_content"
                 app:hintTextColor="#1C8484"
-                android:textColorHint="#73A6C3"
                 app:boxBackgroundColor="@color/white"
                 app:boxStrokeColor="@color/teal_700"
+                android:textColorHint="#73A6C3"
                 android:layout_marginLeft="8dp"
-                android:hint="Precio">
+                android:hint="Cajas">
 
                 <EditText
-                    android:id="@+id/etPriceAreaEdit"
+                    android:id="@+id/etNumberBoxDialogActivity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"/>
@@ -93,43 +124,43 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="45dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btCloseBSArea"
+                android:id="@+id/btResetFormDialogActivity"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="12dp"
-                android:layout_marginRight="10dp"
-                android:text="Cancelar"
-                android:textColor="@color/black"
+                android:text="Resetear"
+                android:textColor="@color/white"
                 app:cornerRadius="8dp"
                 app:strokeColor="#000000"
                 app:strokeWidth="1dp"
-                android:backgroundTint="#ADB1B8"/>
+                android:backgroundTint="#000000" />
 
             <Button
-                android:id="@+id/btUpdateArea"
+                android:id="@+id/btRegisterDialogActivity"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginLeft="8dp"
                 android:padding="12dp"
-                android:text="Actualizar"
+                android:text="Registrar"
                 android:textColor="@color/white"
                 app:cornerRadius="8dp"
-                app:strokeColor="#1C8484"
+                app:strokeColor="#0E913B"
                 app:strokeWidth="2dp"
-                android:backgroundTint="#1C8484"/>
-
+                android:backgroundTint="#0E913B" />
 
         </LinearLayout>
 
-
     </LinearLayout>
+
 </LinearLayout>

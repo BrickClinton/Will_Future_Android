@@ -49,7 +49,7 @@ public class fragmentListArea extends Fragment implements SearchView.OnQueryText
 
     // variables usados en el bottomSheet
     private Button btCloseBottomSheet, btUpdateArea;
-    private EditText etNameAreaEdit, etPriceAreaEdit;
+    private EditText etPriceAreaEdit;
     private AutoCompleteTextView acSearchTypeArea;
     private ArrayAdapter<String> adapterAutocomplete;
     private String[] itemsTypeArea = {
@@ -107,7 +107,7 @@ public class fragmentListArea extends Fragment implements SearchView.OnQueryText
 
     private void loadData() {
         // Obtener los datos
-        listArea = modelArea.getRows();
+        listArea = modelArea.getRows("DESC");
 
         linearLayoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -136,13 +136,12 @@ public class fragmentListArea extends Fragment implements SearchView.OnQueryText
 
         // Inicializar UI
         acSearchTypeArea = bottomSheetDialog.findViewById(R.id.acTypeAreaBottomSheet);
-        etNameAreaEdit = bottomSheetDialog.findViewById(R.id.etNameAreaEdit);
         etPriceAreaEdit = bottomSheetDialog.findViewById(R.id.etPriceAreaEdit);
         btUpdateArea = bottomSheetDialog.findViewById(R.id.btUpdateArea);
         btCloseBottomSheet = bottomSheetDialog.findViewById(R.id.btCloseBSArea);
 
         // Datos traidos
-        etNameAreaEdit.setText(eArea.getNamearea());
+        acSearchTypeArea.setText(eArea.getNamearea());
         etPriceAreaEdit.setText(String.valueOf(eArea.getPrice()));
 
         // Listener autocomplete
@@ -162,12 +161,6 @@ public class fragmentListArea extends Fragment implements SearchView.OnQueryText
         // Obtener la sugerencia despues del numero de palabra
         acSearchTypeArea.setThreshold(1);
         acSearchTypeArea.setAdapter(adapterAutocomplete);
-        acSearchTypeArea.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                etNameAreaEdit.setText(adapterAutocomplete.getItem(i));
-            }
-        });
     }
 
     private void onClickListenerBottomSheet(BottomSheetDialog bottomSheetDialog, EArea eArea){
@@ -175,7 +168,7 @@ public class fragmentListArea extends Fragment implements SearchView.OnQueryText
             @Override
             public void onClick(View view) {
 
-                String nameArea = etNameAreaEdit.getText().toString().trim();
+                String nameArea = acSearchTypeArea.getText().toString().trim();
                 String sPrice = etPriceAreaEdit.getText().toString().trim();
 
                 // Actualizar datos

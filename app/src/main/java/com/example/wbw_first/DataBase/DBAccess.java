@@ -21,7 +21,12 @@ public class DBAccess extends SQLiteOpenHelper {
     // Definición de tablas
     private static final String TABLE_USER = "CREATE TABLE user (iduser INTEGER, nameuser TEXT NOT NULL, lastname TEXT NOT NULL, PRIMARY KEY(iduser AUTOINCREMENT))";
     private static final String TABLE_AREA = "CREATE TABLE area (idarea INTEGER, namearea TEXT NOT NULL UNIQUE, price REAL NOT NULL, dateregister TEXT NOT NULL, PRIMARY KEY(idarea AUTOINCREMENT))";
-    private static final String TABLE_ACTIVITY = "CREATE TABLE activity (idactivity INTEGER, iduser INTEGER NOT NULL, idarea INTEGER NOT NULL, numberbox INTEGER NOT NULL, dateregister TEXT NOT NULL, PRIMARY KEY(idactivity AUTOINCREMENT))";
+    private static final String TABLE_ACTIVITY = "CREATE TABLE activity (idactivity INTEGER, iduser INTEGER NOT NULL, idarea INTEGER NOT NULL, " +
+                                                " numberbox INTEGER NOT NULL, dateregister TEXT NOT NULL, "+
+                                                " PRIMARY KEY(idactivity AUTOINCREMENT), " +
+                                                " FOREIGN KEY(iduser) REFERENCES user (iduser), " +
+                                                " FOREIGN KEY(idarea) REFERENCES area (idarea)" +
+                                                ")";
 
     // Constructor DataBase
     public DBAccess(@Nullable Context context) {

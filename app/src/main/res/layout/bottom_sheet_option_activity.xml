@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:topLeftRadius="30dp"
+    android:topRightRadius="30dp"
+    android:paddingTop="12dp"
+    android:background="@drawable/dialog_bg"
+    app:behavior_peekHeight="60dp"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="50dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/circle_button"/>
+
+    <!--liner-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="#273747"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Opciones"
+        android:gravity="center"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:textColor="#C3C6CC"/>
+
+    <LinearLayout
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="45dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btBsOptionActivityAdd"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:text="Agregar avance"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            app:strokeColor="#E3E8EF"
+            app:strokeWidth="1dp"
+            android:backgroundTint="#2C5485" />
+
+        <Button
+            android:id="@+id/btBsOptionActivityList"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:padding="12dp"
+            android:text="Mostrar lista"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            app:strokeColor="#E3E8EF"
+            app:strokeWidth="1dp"
+            android:backgroundTint="#2C5485" />
+
+    </LinearLayout>
+
+</LinearLayout>

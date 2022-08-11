@@ -3,7 +3,6 @@ package com.example.wbw_first.Fragments;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.SearchView;
@@ -15,17 +14,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.wbw_first.Adapters.ListAdapterCard;
 import com.example.wbw_first.DataBase.ModelUser;
-import com.example.wbw_first.Dialogs.DialogEditUser;
-import com.example.wbw_first.Dialogs.DialogFragmentDemo;
-import com.example.wbw_first.Dialogs.DialogFragmentEditUser;
-import com.example.wbw_first.Entities.EArea;
 import com.example.wbw_first.Entities.EUser;
 import com.example.wbw_first.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -45,7 +39,8 @@ public class fragmentListUser extends Fragment implements SearchView.OnQueryText
     private ListAdapterCard adapter;
     private SearchView searchUser;
 
-    private Button btClose;
+    private Button btClose, btUpdate;
+    private EditText etName, etLastname;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,9 +93,9 @@ public class fragmentListUser extends Fragment implements SearchView.OnQueryText
         adapter = new ListAdapterCard(context, listUsers, new ListAdapterCard.OnItemClickListener() {
             @Override
             public void onItemClickEdit(EUser eUser) {
-                openActivity(eUser);
-                loadData();
-                adapter.notifyDataSetChanged();
+                openBottomSheet(eUser);
+                //loadData();
+                //adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -115,8 +110,11 @@ public class fragmentListUser extends Fragment implements SearchView.OnQueryText
                 builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        modelUser.deleteUser(eUser.getIduser());
-                        loadData();
+                        long iduser = modelUser.deleteUser(eUser.getIduser());
+
+                        if(iduser > 0){
+                            loadData();
+                        }
                     }
                 });
                 builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -134,37 +132,58 @@ public class fragmentListUser extends Fragment implements SearchView.OnQueryText
         recyclerView.setAdapter(adapter);
     }
 
-    private void openActivity(EUser eUser){
-        Intent intent = new Intent(context, DialogEditUser.class);
-
-        // Data send
-        intent.putExtra("iduser", eUser.getIduser());
-        intent.putExtra("username", eUser.getNameuser());
-        intent.putExtra("lastname", eUser.getLastname());
-        startActivity(intent);
-    }
-
     private void openBottomSheet(EUser eUser){
         // Crear modal bottom
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext());
-        bottomSheetDialog.setContentView(R.layout.activity_dialog_edit_user);
+        bottomSheetDialog.setContentView(R.layout.bottom_sheet_update_user);
         bottomSheetDialog.setCanceledOnTouchOutside(true);
 
         // Inicializar UI
-        btClose = bottomSheetDialog.findViewById(R.id.btCloseDialogUser);
+        etName = bottomSheetDialog.findViewById(R.id.etNameuserBsUser);
+        etLastname = bottomSheetDialog.findViewById(R.id.etLastnameBsUser);
+
+        btUpdate = bottomSheetDialog.findViewById(R.id.btUpdateBsUser);
+        btClose = bottomSheetDialog.findViewById(R.id.btCloseBsUser);
 
         // Datos traidos
+        etName.setText(eUser.getNameuser());
+        etLastname.setText(eUser.getLastname());
 
         // Listener onclick
-        btClose.setOnClickListener(view1 -> {
-            bottomSheetDialog.dismiss();
-        });
+        onClickListenerBottomSheet(bottomSheetDialog, eUser);
 
         // Mostrar bottomSheetdialog
         bottomSheetDialog.show();
     }
 
-    private void questionUpdate(EUser eUser){
+
+    private void onClickListenerBottomSheet(BottomSheetDialog bottomSheetDialog, EUser eUser){
+        btUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = etName.getText().toString().trim();
+                String lastname = etLastname.getText().toString().trim();
+
+                if(name.isEmpty() || lastname.isEmpty()){
+                    Toast.makeText(context, "Complete los datos", Toast.LENGTH_SHORT).show();
+                } else {
+                    eUser.setNameuser(name);
+                    eUser.setLastname(lastname);
+
+                    questionUpdate(bottomSheetDialog, eUser);
+                }
+            }
+        });
+
+        btClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+    }
+
+    private void questionUpdate(BottomSheetDialog bottomSheetDialog ,EUser eUser){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("ACTUALIZAR USUARIO");
         builder.setMessage("¿Está seguro de actualizar el registro?");
@@ -175,6 +194,7 @@ public class fragmentListUser extends Fragment implements SearchView.OnQueryText
                 long iduser = modelUser.updateUser(eUser);
 
                 if(iduser > 0){
+                    bottomSheetDialog.dismiss();
                     loadData();
                     Toast.makeText(context, "Actualizado", Toast.LENGTH_SHORT).show();
                 } else {
@@ -182,6 +202,7 @@ public class fragmentListUser extends Fragment implements SearchView.OnQueryText
                 }
             }
         });
+
         builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

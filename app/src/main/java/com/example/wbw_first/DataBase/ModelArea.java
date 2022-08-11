@@ -54,7 +54,7 @@ public class ModelArea extends DBAccess{
     }
 
     // listar
-    public ArrayList<EArea> getRows(){
+    public ArrayList<EArea> getRows(String orderBy){
         // Solicitar acceso de tipo lectura
         SQLiteDatabase db = getReadableDatabase();
 
@@ -64,8 +64,10 @@ public class ModelArea extends DBAccess{
         // Instanciado el arraylist
         ArrayList<EArea> dataList = new ArrayList<>();
 
+        orderBy = orderBy.isEmpty() || orderBy == null? "DESC": orderBy;
+
         // Desencadenar la consulta y traer los datos
-        Cursor cursor = db.rawQuery("SELECT * FROM area ORDER BY idarea DESC", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM area ORDER BY idarea " + orderBy, null);
 
         // Obteniendo los datos obtenidos en la consulta anterior
         while (cursor.moveToNext()){

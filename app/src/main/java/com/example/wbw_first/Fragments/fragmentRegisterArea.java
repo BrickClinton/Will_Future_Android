@@ -32,7 +32,7 @@ public class fragmentRegisterArea extends Fragment {
     private View view;
     private ModelArea modelArea;
     private Context context = null;
-    private EditText etNameArea, etPriceArea;
+    private EditText etPriceArea;
     private Button btRegisterArea, btResetFormArea;
     private AutoCompleteTextView acSearchTypeArea;
     private ArrayAdapter<String> adapter;
@@ -73,7 +73,7 @@ public class fragmentRegisterArea extends Fragment {
         btRegisterArea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nameArea = etNameArea.getText().toString().trim();
+                String nameArea = acSearchTypeArea.getText().toString().trim();
                 String sPrice = etPriceArea.getText().toString().trim();
 
                 if(nameArea.isEmpty() || sPrice.isEmpty()){
@@ -96,7 +96,6 @@ public class fragmentRegisterArea extends Fragment {
     private void initUI(){
         // Asignar variables
         acSearchTypeArea = view.findViewById(R.id.acTextSearchArea);
-        etNameArea = view.findViewById(R.id.etNameareaAdd);
         etPriceArea = view.findViewById(R.id.etPriceAreaAdd);
 
         btRegisterArea = view.findViewById(R.id.btRegisterArea);
@@ -110,12 +109,6 @@ public class fragmentRegisterArea extends Fragment {
         // Obtener la sugerencia despues del numero de palabra
         acSearchTypeArea.setThreshold(1);
         acSearchTypeArea.setAdapter(adapter);
-        acSearchTypeArea.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                etNameArea.setText(adapter.getItem(i));
-            }
-        });
     }
 
     private void confirmRegister(String nameArea, double price){
@@ -142,7 +135,6 @@ public class fragmentRegisterArea extends Fragment {
                 }
             }
         });
-
         builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -156,7 +148,6 @@ public class fragmentRegisterArea extends Fragment {
     private void resetFormArea(){
         acSearchTypeArea.clearListSelection();
         acSearchTypeArea.setText(null);
-        etNameArea.setText(null);
         etPriceArea.setText(null);
         acSearchTypeArea.requestFocus();
     }

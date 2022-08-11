@@ -7,18 +7,38 @@ public class EActivity implements Serializable {
     private int idactivity;
     private int iduser;
     private int idarea;
+    private String namearea;
+    private double price;
     private int numberbox;
     private String dateregister;
 
     public EActivity() {
     }
 
-    public EActivity(int idactivity, int iduser, int idarea, int numberbox, String dateregister) {
+    public EActivity(int idactivity, int iduser, int idarea, String namearea, double price, int numberbox, String dateregister) {
         this.idactivity = idactivity;
         this.iduser = iduser;
         this.idarea = idarea;
+        this.namearea = namearea;
+        this.price = price;
         this.numberbox = numberbox;
         this.dateregister = dateregister;
+    }
+
+    public String getNamearea() {
+        return namearea;
+    }
+
+    public void setNamearea(String namearea) {
+        this.namearea = namearea;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public int getIdactivity() {
@@ -67,6 +87,8 @@ public class EActivity implements Serializable {
                 "idactivity=" + idactivity +
                 ", iduser=" + iduser +
                 ", idarea=" + idarea +
+                ", namearea='" + namearea + '\'' +
+                ", price=" + price +
                 ", numberbox=" + numberbox +
                 ", dateregister='" + dateregister + '\'' +
                 '}';
