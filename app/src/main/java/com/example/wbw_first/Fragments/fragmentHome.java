@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.wbw_first.Interfaces.IDrawerLayout;
 import com.example.wbw_first.MainActivity;
 import com.example.wbw_first.R;
 import com.example.wbw_first.TabsLayout;
@@ -27,7 +30,10 @@ public class fragmentHome extends Fragment {
 
     private View view;
     private Context context = null;
-    private Button btOpenLogin, btOpen1, btOpen2, btQuery;
+    private Activity activity;
+    private Button btOpenLogin, btOpen1, btOpen2;
+    private CardView cvOpenUser, cvOpenArea, cvOpenProgress, cvOpenHistory;
+    private IDrawerLayout iDrawerLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,93 +55,29 @@ public class fragmentHome extends Fragment {
 
     // Inicializar vinculación con ui
     private void initUI(){
-        btOpenLogin = view.findViewById(R.id.btShowModalBottom);
-        btOpen1 = view.findViewById(R.id.btOpen1);
-        btOpen2 = view.findViewById(R.id.btOpen2);
-        btQuery = view.findViewById(R.id.btQuest);
+        cvOpenUser = view.findViewById(R.id.cvHomeOpenUser);
+        cvOpenArea = view.findViewById(R.id.cvHomeOpenArea);
+        cvOpenProgress = view.findViewById(R.id.cvHomeOpenProgress);
+        cvOpenHistory = view.findViewById(R.id.cvHomeOpenHistory);
     }
 
     // Listener click
     private void listenerOnClicks(){
-        btOpenLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Crear modal bottom
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
-                bottomSheetDialog.setContentView(R.layout.bottom_sheet_dialog);
-                bottomSheetDialog.setCanceledOnTouchOutside(true);
-
-                // Initialize
-                EditText etUserAccount, etPasswordAccount;
-                Button btSubmit;
-
-                etUserAccount = bottomSheetDialog.findViewById(R.id.etUserAccount);
-                etPasswordAccount = bottomSheetDialog.findViewById(R.id.etPasswordAccount);
-                btSubmit = bottomSheetDialog.findViewById(R.id.btSubmitAccount);
-
-                btSubmit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        // Set validate
-                        if(etUserAccount.getText().toString().equals("admin") && etPasswordAccount.getText().toString().equals("admin")){
-                            // Cerrar modal
-                            bottomSheetDialog.cancel();
-
-                            // Crear dialogo
-                            AlertDialog.Builder dialog = new AlertDialog.Builder(view.getContext());
-                            dialog.setTitle("Login");
-                            dialog.setMessage("Accediendo");
-                            dialog.setCancelable(false);
-                            dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    dialogInterface.dismiss();
-                                }
-                            });
-                            dialog.show();
-
-                        } else {
-                            Toast.makeText(view.getContext(), "Login Failed", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-                // Mostrar bottomSheetdialog
-                bottomSheetDialog.show();
-            }
+        // Navegación
+        cvOpenUser.setOnClickListener(view1 -> {
+            iDrawerLayout.ClickUser(view);
         });
 
-        btOpen1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                redirectActivity(getActivity(), MainActivity.class);
-            }
+        cvOpenArea.setOnClickListener(view1 -> {
+            iDrawerLayout.ClickArea(view);
         });
 
-        btOpen2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                redirectActivity(getActivity(), TabsLayout.class);
-            }
+        cvOpenProgress.setOnClickListener(view1 -> {
+            iDrawerLayout.ClickProgress(view);
         });
 
-        btQuery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-
-                builder.setTitle("Message test");
-                builder.setMessage("Este es un dialogo de prueba");
-                builder.setCancelable(false);
-                builder.setNegativeButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                });
-
-                builder.show();
-            }
+        cvOpenHistory.setOnClickListener(view1 -> {
+            iDrawerLayout.ClickHistory(view);
         });
     }
 
@@ -149,5 +91,15 @@ public class fragmentHome extends Fragment {
 
         // Start activity
         activity.startActivity(intent);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        if(context instanceof  Activity){
+            activity = (Activity) context;
+            iDrawerLayout = (IDrawerLayout) activity;
+        }
     }
 }

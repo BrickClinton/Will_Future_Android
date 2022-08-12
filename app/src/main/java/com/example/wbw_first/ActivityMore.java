@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.ActionMode;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -36,14 +37,14 @@ public class ActivityMore extends AppCompatActivity {
     private void onClickListener(){
         // Usando lamda para capturar el evento click
         tbDialog.setNavigationOnClickListener(view -> {
-            //overridePendingTransition(R.anim.rigth_in, R.anim.rigth_out);
             this.finish();
         });
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        finish();
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.rigth_in, R.anim.rigth_out);
     }
+
 }

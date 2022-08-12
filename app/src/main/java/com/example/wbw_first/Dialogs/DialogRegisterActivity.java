@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ public class DialogRegisterActivity extends AppCompatActivity {
 
     private Toolbar tbDialog;
     private AutoCompleteTextView acSearchTypeArea;
-    private Button btRegisterActivity, btResetActivity;
+    private Button btRegisterActivity, btResetActivity, btOpenListActivity;
     private EditText etNumberBox, etNameAndLastname;
     private int iduser = -1;
     private int idarea = -1;
@@ -71,6 +72,7 @@ public class DialogRegisterActivity extends AppCompatActivity {
 
         btRegisterActivity = findViewById(R.id.btRegisterDialogActivity);
         btResetActivity = findViewById(R.id.btResetFormDialogActivity);
+        btOpenListActivity = findViewById(R.id.btDialogRegisterOpenList);
 
         // Tolbar
         tbDialog = findViewById(R.id.tbReturnDialogActivity);
@@ -124,6 +126,13 @@ public class DialogRegisterActivity extends AppCompatActivity {
         btResetActivity.setOnClickListener(view -> {
             resetFormActivity();
         });
+
+        btOpenListActivity.setOnClickListener(view -> {
+            EUser eUser = new EUser();
+            eUser.setIduser(iduser);
+            eUser.setNameuser(etNameAndLastname.getText().toString());
+            openActivity(eUser, DialogListActivity.class);
+        });
     }
 
     private void registerActivity(EActivity eActivity){
@@ -155,6 +164,20 @@ public class DialogRegisterActivity extends AppCompatActivity {
         acSearchTypeArea.setText(null);
         etNumberBox.setText(null);
         acSearchTypeArea.requestFocus();
+    }
+
+    private void openActivity(EUser eUser, Class aClass){
+        Intent intent = new Intent(context, aClass);
+        intent.putExtra("iduser", eUser.getIduser());
+        intent.putExtra("username", eUser.getNameuser() + " " + eUser.getLastname());
+        startActivity(intent);
+        this.overridePendingTransition(R.anim.left_in, R.anim.left_out);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.rigth_in, R.anim.rigth_out);
     }
 
 }

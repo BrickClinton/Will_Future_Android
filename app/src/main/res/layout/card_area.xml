@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Texto de prueba"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"/>
 
@@ -44,7 +44,15 @@
                     android:layout_height="wrap_content"
                     android:textColor="#128C19"
                     android:text="Precio: "
-                    android:textSize="18sp"/>
+                    android:textSize="17sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#34495E"
+                    android:textStyle="normal|italic"
+                    android:text="S/ "
+                    android:textSize="17sp"/>
 
                 <TextView
                     android:id="@+id/tvPriceAreaList"
@@ -53,7 +61,7 @@
                     android:textColor="#34495E"
                     android:textStyle="normal|italic"
                     android:text="50"
-                    android:textSize="18sp"/>
+                    android:textSize="17sp"/>
 
             </LinearLayout>
 

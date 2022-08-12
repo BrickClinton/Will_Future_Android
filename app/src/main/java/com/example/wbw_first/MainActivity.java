@@ -129,11 +129,11 @@ public class MainActivity extends AppCompatActivity implements IDrawerLayout, Vi
 
                 // Actualizar titulo del tolbar
                 switch (position){
-                    case 0: tvTitleTolbar.setText("WBW-Hard"); break;
+                    case 0: tvTitleTolbar.setText("Daily Work"); break;
                     case 1: tvTitleTolbar.setText("Gestión de usuario"); break;
                     case 2: tvTitleTolbar.setText("Gestión de area"); break;
                     case 3: tvTitleTolbar.setText("Historial"); break;
-                    default: tvTitleTolbar.setText("WBW-Hard");
+                    default: tvTitleTolbar.setText(R.string.app_name);
                 }
             }
 
@@ -214,7 +214,10 @@ public class MainActivity extends AppCompatActivity implements IDrawerLayout, Vi
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.ivMenu: ClickMenu(view); break;
-            case R.id.ivMoreMain: Drawer.redirectActivity(this, ActivityMore.class); break;
+            case R.id.ivMoreMain:
+                Drawer.redirectActivity(this, ActivityMore.class);
+                overridePendingTransition(R.anim.down_in, R.anim.down_out);
+                break;
             case R.id.ivMainBack: ClickBackMain(view); break;
             case R.id.lyHome: ClickHome(view); break;
             case R.id.lyUser: ClickUser(view); break;

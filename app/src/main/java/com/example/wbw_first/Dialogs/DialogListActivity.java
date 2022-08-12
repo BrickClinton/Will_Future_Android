@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -18,20 +18,29 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wbw_first.Adapters.AdapterListActivity;
-import com.example.wbw_first.Adapters.AdapterListUserHorizontal;
 import com.example.wbw_first.DataBase.ModelActivity;
 import com.example.wbw_first.DataBase.ModelArea;
 import com.example.wbw_first.DataBase.ModelUser;
 import com.example.wbw_first.Entities.EActivity;
 import com.example.wbw_first.Entities.EArea;
-import com.example.wbw_first.Entities.EUser;
 import com.example.wbw_first.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class DialogListActivity extends AppCompatActivity {
 
@@ -45,12 +54,23 @@ public class DialogListActivity extends AppCompatActivity {
     private AdapterListActivity adapterListActivity;
     private SwipeRefreshLayout swipeRefreshLayoutActivity;
     private Toolbar tbDialog;
+    private ImageView ivDateStart, ivDateEnd;
+    private EditText etDateStart, etDateEnd;
+    private TextInputLayout tilDateStart, tilDateEnd;
+    private ImageButton ibFilterActivity;
+    private TextView tvTotalMoney;
 
     private Button btCancel, btUpdate;
     private AutoCompleteTextView acSearchArea;
     private EditText etNumberBox;
     private EActivity eActivity;
     private int idarea = -1;
+    private double totalMoney = 0;
+
+    final Calendar calendar = Calendar.getInstance();
+    int day = calendar.get(Calendar.HOUR_OF_DAY);
+    int month = calendar.get(Calendar.MONTH);
+    int year = calendar.get(Calendar.YEAR);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +88,8 @@ public class DialogListActivity extends AppCompatActivity {
         // Cargar datod
         loadData();
 
+        onClickListener();
+
         swipeRefreshLayoutActivity.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -81,6 +103,14 @@ public class DialogListActivity extends AppCompatActivity {
     private void initUI() {
         rvListActivity = findViewById(R.id.rvListActivity);
         swipeRefreshLayoutActivity = findViewById(R.id.swipeRefreshLayoutActivity);
+
+        etDateStart = findViewById(R.id.etDateRangeStart);
+        etDateEnd = findViewById(R.id.etDateRangeEnd);
+        tvTotalMoney = findViewById(R.id.tvTotalMoney);
+
+        tilDateStart = findViewById(R.id.tilDateRangeStart);
+        tilDateEnd = findViewById(R.id.tilDateRangeEnd);
+        ibFilterActivity = findViewById(R.id.ibFilterActivity);
 
         tbDialog = findViewById(R.id.tbReturnActivityList);
         final Drawable iconReturn = getResources().getDrawable(R.drawable.ic_return);
@@ -99,6 +129,9 @@ public class DialogListActivity extends AppCompatActivity {
 
         listActivity = modelActivity.getRowsByIduser(iduser);
 
+        String tMoney = String.valueOf(getTotalMoney(listActivity));
+        tvTotalMoney.setText(tMoney);
+
         rvListActivity.setLayoutManager(new LinearLayoutManager(context));
         rvListActivity.setHasFixedSize(true);
         adapterListActivity = new AdapterListActivity(context, listActivity, new AdapterListActivity.OnItemClickListener() {
@@ -114,6 +147,87 @@ public class DialogListActivity extends AppCompatActivity {
         });
 
         rvListActivity.setAdapter(adapterListActivity);
+    }
+
+    private double getTotalMoney(ArrayList<EActivity> listActivity){
+        double total = 0;
+        double calcule = 0;
+
+        for (int i = 0; i < listActivity.size(); i++){
+            calcule = (listActivity.get(i).getPrice() * listActivity.get(i).getNumberbox());
+            total += calcule;
+        }
+
+        return Math.round(total * 100.00) / 100.00;
+    }
+
+    private void onClickListener(){
+        tilDateStart.setStartIconOnClickListener(view -> {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(context,  (datePicker, i, i1, i2) -> {
+                i1 += 1;
+                String sDay = i2 < 10? "0" + i2: "" + i2;
+                String sMonth = i1 < 10? "0" + i1: "" + i1;
+                etDateStart .setText(sDay + "/" + sMonth + "/" + i);
+            }, day, month, year);
+
+            //datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(0, 0, 0)));
+            datePickerDialog.getDatePicker().setMinDate(new Date("2022/01/01").getTime());
+            datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+            datePickerDialog.show();
+        });
+        tilDateEnd.setStartIconOnClickListener(view -> {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(context,  (datePicker, i, i1, i2) -> {
+                i1 += 1;
+                String sDay = i2 < 10? "0" + i2: "" + i2;
+                String sMonth = i1 < 10? "0" + i1: "" + i1;
+                etDateEnd .setText(sDay + "/" + sMonth + "/" + i);
+            }, day, month, year);
+
+            //datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(0, 0, 0)));
+            datePickerDialog.getDatePicker().setMinDate(new Date("2022/01/01").getTime());
+            datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+            datePickerDialog.show();
+        });
+
+        // Filtrar por fechas
+        ibFilterActivity.setOnClickListener(view -> {
+            String dateStart = etDateStart.getText().toString().trim();
+            String dateEnd = etDateEnd.getText().toString().trim();
+
+            if(dateStart.isEmpty() || dateEnd.isEmpty()){
+                Toast.makeText(context, "Complete las fechas", Toast.LENGTH_SHORT).show();
+            } else{
+                filteredByDates(dateStart, dateEnd);
+            }
+        });
+
+    }
+
+    private void filteredByDates(String dateStart, String dateEnd){
+        if(!validateDate(dateStart) || !validateDate(dateEnd)){
+            Toast.makeText(context, "Fecha incorrecta", Toast.LENGTH_SHORT).show();
+        } else {
+            LocalDate lDateStart = adapterListActivity.getLocalDateOfString(dateStart);
+            LocalDate lDateEnd = adapterListActivity.getLocalDateOfString(dateEnd);
+
+            if(lDateStart.compareTo(lDateEnd) > 0){
+                Toast.makeText(context, "La fecha inicial no puede ser mayor", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                totalMoney =  adapterListActivity.filteredByDate(dateStart, dateEnd);
+                tvTotalMoney.setText(String.valueOf(totalMoney));
+            }
+        }
+    }
+
+    public boolean validateDate(String strDate) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate localDate = LocalDate.parse(strDate, formatter);
+            return true;
+        }catch (Exception ex) {
+            return false;
+        }
     }
 
     private void openBottomSheet(EActivity eActivity){
@@ -220,5 +334,11 @@ public class DialogListActivity extends AppCompatActivity {
         });
 
         builder.show();
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.rigth_in, R.anim.rigth_out);
     }
 }

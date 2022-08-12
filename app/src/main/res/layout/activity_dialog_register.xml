@@ -161,6 +161,22 @@
 
         </LinearLayout>
 
+
+        <Button
+            android:id="@+id/btDialogRegisterOpenList"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:padding="12dp"
+            android:text="Mostrar avances"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            app:strokeColor="#1660AA"
+            app:strokeWidth="2dp"
+            android:backgroundTint="#1660AA" />
+
     </LinearLayout>
 
 </LinearLayout>

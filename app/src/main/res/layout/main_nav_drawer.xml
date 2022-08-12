@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2C2B2B"
     android:orientation="vertical">
 
     <ScrollView
@@ -13,25 +14,27 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Imagen del usuario -->
+            <!-- Imagen portada -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/inspeccion"
+                android:alpha="0.8"
                 android:orientation="vertical">
+
+                <!-- Icono back -->
+                <ImageView
+                    android:id="@+id/ivMainBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/ic_return"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
-                    <!-- Icono -->
-                    <ImageView
-                        android:id="@+id/ivMainBack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:src="@drawable/ic_return"/>
 
                     <ImageView
                         android:id="@+id/ivLogo"
@@ -40,20 +43,10 @@
                         android:layout_margin="16dp"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentRight="true"
+                        android:scaleType="centerCrop"
                         android:src="@drawable/inspeccion"/>
 
                 </LinearLayout>
-
-
-                <!-- Nombre del usuario -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Admin user 86"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:textColor="#636363"/>
 
             </LinearLayout>
 
@@ -61,7 +54,6 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:background="#636363"/>
 
@@ -87,7 +79,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Home"
+                    android:text="Inicio"
+                    android:textColor="#9E9D9D"
                     android:padding="12dp"
                     android:layout_marginStart="16dp"/>
 
@@ -102,19 +95,18 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
-
                 <!-- Icono -->
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_person"/>
 
-
                 <!-- Titulo -->
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="#9E9D9D"
                     android:text="Gestión de usuario"
                     android:padding="12dp"
                     android:layout_marginStart="16dp"/>
@@ -143,6 +135,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="#9E9D9D"
                     android:text="Gestión de areas"
                     android:padding="12dp"
                     android:layout_marginStart="16dp"/>
@@ -171,6 +164,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="#9E9D9D"
                     android:text="Avances"
                     android:padding="12dp"
                     android:layout_marginStart="16dp"/>
@@ -199,6 +193,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="#9E9D9D"
                     android:text="Historial"
                     android:padding="12dp"
                     android:layout_marginStart="16dp"/>
@@ -228,6 +223,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textColor="#9E9D9D"
                     android:text="Salir de la aplicación"
                     android:padding="12dp"
                     android:layout_marginStart="16dp"/>

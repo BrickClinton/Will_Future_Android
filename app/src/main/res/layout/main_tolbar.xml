@@ -22,11 +22,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="WBW-Hard"
+        android:text="Daily Work"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:textColor="#0D94B7"/>
+        android:textColor="#2B337B"/>
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchMain"

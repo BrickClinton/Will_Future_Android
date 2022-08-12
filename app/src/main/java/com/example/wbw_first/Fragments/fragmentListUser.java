@@ -156,7 +156,6 @@ public class fragmentListUser extends Fragment implements SearchView.OnQueryText
         bottomSheetDialog.show();
     }
 
-
     private void onClickListenerBottomSheet(BottomSheetDialog bottomSheetDialog, EUser eUser){
         btUpdate.setOnClickListener(new View.OnClickListener() {
             @Override

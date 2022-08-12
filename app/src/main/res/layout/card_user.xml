@@ -23,6 +23,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:paddingLeft="2dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/avatar"/>
 
         <LinearLayout
@@ -37,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Admin 45"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:textStyle="bold"
                 android:textAlignment="inherit"
                 android:gravity="start"
@@ -49,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Historial del usuario"
-                android:textSize="18sp"
+                android:textSize="17sp"
                 android:textAlignment="inherit"
                 android:gravity="start"
                 android:textColor="@color/black"/>

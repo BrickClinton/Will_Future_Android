@@ -23,21 +23,6 @@ public class fragmentHistory extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_history, container, false);
 
-        // Fragmento mostrado por defecto
-        replaceFragment(new fragmentCarouselSlider());
-
         return view;
-    }
-
-    /**
-     * Este método remplaza el contenido del fragment "fragmentContainer"
-     * @param fragment
-     */
-    private void replaceFragment(Fragment fragment){
-        FragmentManager fragmentManager = getParentFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        fragmentTransaction.replace(R.id.flContainerHistory, fragment);
-        fragmentTransaction.commit();
     }
 }

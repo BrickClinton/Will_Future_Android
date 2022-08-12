@@ -66,7 +66,7 @@ public class ListAdapterCard extends RecyclerView.Adapter<ListAdapterCard.ViewHo
         } else {
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
                 ArrayList<EUser> collections = (ArrayList<EUser>) listOriginal.stream()
-                        .filter(i -> i.getNameuser().toLowerCase().contains(search.toLowerCase()))
+                        .filter(i -> i.getNameuser().toLowerCase().contains(search.toLowerCase()) || i.getLastname().toLowerCase().contains(search.toLowerCase()))
                         .collect(Collectors.toList());
 
                 listUser.clear();
