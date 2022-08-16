@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="6dp"
+    android:background="@color/white"
     android:animateLayoutChanges="true"
     app:cardCornerRadius="4dp"
     app:cardElevation="3dp"
@@ -15,6 +16,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="horizontal">
 
         <ImageView
@@ -66,6 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:textSize="12dp"
+                    android:textColor="@color/white"
                     android:backgroundTint="#1075A7"
                     android:layout_marginLeft="4dp"
                     android:layout_marginRight="4dp"
@@ -75,6 +78,7 @@
                     android:id="@+id/btDeleteUser"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:textColor="@color/white"
                     android:textSize="12dp"
                     android:layout_marginLeft="4dp"
                     android:layout_marginRight="4dp"

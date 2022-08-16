@@ -54,4 +54,8 @@ dependencies {
 
     // circler imagen
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // Chart
+    //implementation 'com.github.lecho:hellocharts-android:v1.5.8'
+    //implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
 }
